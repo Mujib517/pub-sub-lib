@@ -14,3 +14,7 @@ Publish Subscribe Libray
 
     var data={name:'pub-sub-lib'};
     pubSub.emit('eventName',data);
+
+4. Unsubscribe
+
+    pubSub.unsubscribe('eventName',callback);
