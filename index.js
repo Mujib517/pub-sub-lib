@@ -27,10 +27,10 @@ PubSub.prototype.emit = function (event, data) {
 
 /*test*/
 
-var pubSub =new PubSub();
+// var pubSub =new PubSub();
 
-pubSub.subscribe('evt', function (data) { console.log('hell') });
-pubSub.subscribe('evt', function (data) { console.log('hell2') });
-pubSub.subscribe('evt', function (data) { console.log('hell3') });
+// pubSub.subscribe('evt', function (data) { console.log('hello') });
+// pubSub.subscribe('evt', function (data) { console.log('hello2') });
+// pubSub.subscribe('evt', function (data) { console.log('hello3') });
 
-pubSub.emit('evt', { data: 'data' });
+// pubSub.emit('evt', { data: 'data' });
