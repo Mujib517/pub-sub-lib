@@ -24,13 +24,24 @@ PubSub.prototype.emit = function (event, data) {
     }
 };
 
+PubSub.prototype.unsubscribe = function (event, callback) {
+    var subscribers = this.__events[event];
+    for (var i = 0; i < subscribers.length; i++) {
+        if (subscribers[i] === callback) subscribers.splice(i, 1);
+    }
+};
+
 
 /*test*/
 
-// var pubSub =new PubSub();
+// var pubSub = new PubSub();
+
+// var cb = function (data) { console.log('hello2') };
 
 // pubSub.subscribe('evt', function (data) { console.log('hello') });
-// pubSub.subscribe('evt', function (data) { console.log('hello2') });
+// pubSub.subscribe('evt', cb);
 // pubSub.subscribe('evt', function (data) { console.log('hello3') });
+
+// pubSub.unsubscribe('evt', cb);
 
 // pubSub.emit('evt', { data: 'data' });
