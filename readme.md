@@ -1,7 +1,9 @@
 Publish Subscribe Libray
 ======================================================
 1. Create an object
+    <code>
     var pubSub=new PubSub();
+    </code>
 2. Subscribe
 
  <code>
@@ -9,19 +11,22 @@ Publish Subscribe Libray
         console.log('hello world');
     };
     
-    pubSub.subscribe('eventName',callback);
-
+    </code>
+    <code>
+        pubSub.subscribe('eventName',callback);
      </code>
 
 3. Emit
 
     <code>
-    var data={name:'pub-sub-lib'};
-    pubSub.emit('eventName',data);
+        var data={name:'pub-sub-lib'};
+    </code>
+    <code>
+        pubSub.emit('eventName',data);
     </code>
 
 4. Unsubscribe
 
     <code>
-    pubSub.unsubscribe('eventName',callback);
+        pubSub.unsubscribe('eventName',callback);
     </code>
