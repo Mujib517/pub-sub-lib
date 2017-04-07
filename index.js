@@ -1,30 +1,36 @@
 'use strict';
 
-var pubSub = (function (eventName) {
+function PubSub() {
+    
+    //if user doesn't create object using new operator
+    if (PubSub.prototype.constructor.name!=='PubSub') return new PubSub();
+      this.__events = {};
+}
 
-    var events = {};
+PubSub.prototype.subscribe = function (event, callback) {
 
-    var subscribe = function (callback) {
+    if (!this.__events[event]) this.__events[event] = [];  //initialize with empty subscriber array
 
-        if (!events[eventName]) events[eventName] = []; //initialize with empty subscribers for first time
+    this.__events[event].push(callback);
+};
 
-        events[eventName].push(callback);
-    };
+PubSub.prototype.emit = function (event, data) {
+    var subscribers = this.__events[event];
 
-    var emit = function (data) {
-
-        if (!events[eventName]) return;
-
-        var subscribers = events[eventName];
-
+    if (subscribers) {
         for (var i = 0; i < subscribers.length; i++) {
             subscribers[i](data);
         }
-    };
-
-    return {
-        subscribe: subscribe,
-        emit: emit
     }
+};
 
-});
+
+/*test*/
+
+var pubSub = PubSub();
+
+pubSub.subscribe('evt', function (data) { console.log('hell') });
+pubSub.subscribe('evt', function (data) { console.log('hell2') });
+pubSub.subscribe('evt', function (data) { console.log('hell3') });
+
+pubSub.emit('evt', { data: 'data' });
