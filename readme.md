@@ -6,27 +6,26 @@ Publish Subscribe Libray
     </code>
 2. Subscribe
 
- <code>
-    var callback=function(){
-        console.log('hello world');
-    };
+ <pre>
+     var callback=function(){
+        console.log('hello world');};
     
-    </code>
-    <code>
+    </pre>
+    <pre>
         pubSub.subscribe('eventName',callback);
-     </code>
+     </pre>
 
 3. Emit
 
-    <code>
+    <pre>
         var data={name:'pub-sub-lib'};
-    </code>
-    <code>
+    </pre>
+    <pre>
         pubSub.emit('eventName',data);
-    </code>
+    </pre>
 
 4. Unsubscribe
 
-    <code>
+    <pre>
         pubSub.unsubscribe('eventName',callback);
-    </code>
+    </pre>
