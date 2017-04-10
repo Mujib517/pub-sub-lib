@@ -3,7 +3,7 @@
 function PubSub() {
 
     //if user doesn't create object using new operator
-    if (PubSub.prototype.constructor.name !== 'PubSub') return new PubSub();
+    if (!(this instanceof PubSub)) return new PubSub();
     this.__events = {};
 }
 
@@ -24,6 +24,7 @@ PubSub.prototype.emit = function (event, data) {
     }
 };
 
+
 //notify first n subscribers
 PubSub.prototype.multicast = function (event, data, n) {
 
@@ -38,12 +39,22 @@ PubSub.prototype.multicast = function (event, data, n) {
     }
 };
 
+PubSub.prototype.unsubscribe = function (event, callback) {
+    var subscribers = this.__events[event];
+    for (var i = 0; i < subscribers.length; i++) {
+        if (subscribers[i] === callback) subscribers.splice(i, 1);
+    }
+};
+
 /*test*/
 
 // var pubSub = new PubSub();
+// var cb = function (data) { console.log('hello2') };
 
-// pubSub.subscribe('evt', function (data) { console.log('hell') });
-// pubSub.subscribe('evt', function (data) { console.log('hell2') });
-// pubSub.subscribe('evt', function (data) { console.log('hell3') });
+// pubSub.subscribe('evt', function (data) { console.log('hello') });
+// pubSub.subscribe('evt', cb);
+// pubSub.subscribe('evt', function (data) { console.log('hello3') });
 
-// pubSub.multicast('evt', { data: 'data' },1);
+// pubSub.unsubscribe('evt', cb);
+
+// pubSub.emit('evt', { data: 'data' });
