@@ -7,11 +7,19 @@ function PubSub() {
     this.__events = {};
 }
 
-PubSub.prototype.subscribe = function (event, callback) {
+PubSub.prototype.subscribe = function () {
 
-    if (!this.__events[event]) this.__events[event] = [];  //initialize with empty subscriber array
+    var self = this;
 
-    this.__events[event].push(callback);
+    var event = arguments[0];
+    var subscribers = Array.prototype.slice.call(arguments, 1);
+
+    if (!self.__events[event]) self.__events[event] = [];  //initialize with empty subscriber array
+
+    subscribers.forEach(function (subscriber) {
+        self.__events[event].push(subscriber);
+    });
+
 };
 
 PubSub.prototype.emit = function (event, data) {
@@ -51,13 +59,15 @@ PubSub.prototype.unsubscribe = function (event, callback) {
 
 /*test*/
 
-var pubSub = new PubSub();
-var cb = function (data) { console.log('hello2') };
+// var pubSub = new PubSub();
+// var cb = function (data) { console.log('hello2',data) };
+// var cb2 = function (data) { console.log('hello') };
+// var cb3 = function (data) { console.log('hello3') };
 
-pubSub.subscribe('evt', function (data) { console.log('hello') });
-pubSub.subscribe('evt', cb);
-pubSub.subscribe('evt', function (data) { console.log('hello3') });
+// pubSub.subscribe('evt', cb, cb2, cb3);
+// pubSub.subscribe('evt', cb);
+// pubSub.subscribe('evt', cb);
 
-pubSub.unsubscribe('evt', cb);
+//pubSub.unsubscribe('evt', cb);
 
-pubSub.broadcast('evt', { data: 'data' });
+//pubSub.multicast('evt', { data: 'data' },2);
