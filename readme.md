@@ -29,13 +29,13 @@ Publish Subscribe Libray
 
     </pre>
 
-3. a Multicast: notify first n subscribers
+4. Multicast: notify first n subscribers
 
 <pre>
     pubSub.multicast('eventName',data,2); //notifies first two subscribers
 </pre>
 
-4. Unsubscribe
+5. Unsubscribe
 
     <pre>
     pubSub.unsubscribe('eventName',callback);
@@ -43,7 +43,7 @@ Publish Subscribe Libray
 
 ======================================================
 
-5. Subscribe multiple subscribers all at once
+6. Subscribe multiple subscribers all at once
 
 <pre>
     var cb1=function(data){
@@ -62,13 +62,13 @@ Publish Subscribe Libray
     pubSub.subscribe('eventName',cb1,cb2,cb3);
 </pre>
 
-6. unsubscribe multiple subscribers all at once
+7. unsubscribe multiple subscribers all at once
 
 <pre>
     pubSub.unsubscribe('eventName',cb1,cb2);
 </pre>
 
-7. Remove all subscribers
+8. Remove all subscribers
 
 <pre>
     pubSub.clearAll('eventName');
