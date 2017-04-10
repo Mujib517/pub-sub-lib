@@ -22,6 +22,11 @@ Publish Subscribe Libray
     };
 
     pubSub.emit('eventName',data);
+
+    or 
+
+    pubSub.broadcast('eventName',data);
+    
     </pre>
 
 4. Unsubscribe
