@@ -50,24 +50,36 @@ PubSub.prototype.multicast = function (event, data, n) {
     }
 };
 
-PubSub.prototype.unsubscribe = function (event, callback) {
+PubSub.prototype.unsubscribe = function () {
+
+    var self = this;
+
+    var event = arguments[0];
+    var unsubscribers = Array.prototype.slice.call(arguments, 1); //get all the callbacks passed
+
     var subscribers = this.__events[event];
-    for (var i = 0; i < subscribers.length; i++) {
-        if (subscribers[i] === callback) subscribers.splice(i, 1);
+
+    if (subscribers) {
+        unsubscribers.forEach(function (unsubscriber) {
+            for (var i = 0; i < subscribers.length; i++) {
+                if (subscribers[i] === unsubscriber) subscribers.splice(i, 1);
+            }
+        });
     }
 };
+
+
+
 
 /*test*/
 
 // var pubSub = new PubSub();
-// var cb = function (data) { console.log('hello2',data) };
+// var cb = function (data) { console.log('hello2', data) };
 // var cb2 = function (data) { console.log('hello') };
 // var cb3 = function (data) { console.log('hello3') };
 
 // pubSub.subscribe('evt', cb, cb2, cb3);
-// pubSub.subscribe('evt', cb);
-// pubSub.subscribe('evt', cb);
 
-//pubSub.unsubscribe('evt', cb);
+// pubSub.unsubscribe('evt', cb, cb2);
 
-//pubSub.multicast('evt', { data: 'data' },2);
+// pubSub.multicast('evt', { data: 'data' }, 2);

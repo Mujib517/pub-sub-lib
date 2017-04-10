@@ -49,3 +49,9 @@ Publish Subscribe Libray
 
     pubSub.subscribe('eventName',cb1,cb2,cb3);
 </pre>
+
+6. unsubscribe multiple subscribers all at once
+
+<pre>
+    pubSub.unsubscribe('eventName',cb1,cb2);
+</pre>
