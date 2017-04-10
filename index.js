@@ -24,6 +24,21 @@ PubSub.prototype.emit = function (event, data) {
     }
 };
 
+
+//notify first n subscribers
+PubSub.prototype.multicast = function (event, data, n) {
+
+    var subscribers = this.__events[event];
+
+    if (subscribers) {
+        var length = subscribers.length < n ? subscribers.length : n;
+
+        for (var i = 0; i < length; i++) {
+            subscribers[i](data);
+        }
+    }
+};
+
 PubSub.prototype.unsubscribe = function (event, callback) {
     var subscribers = this.__events[event];
     for (var i = 0; i < subscribers.length; i++) {
@@ -31,11 +46,9 @@ PubSub.prototype.unsubscribe = function (event, callback) {
     }
 };
 
-
 /*test*/
 
 // var pubSub = new PubSub();
-
 // var cb = function (data) { console.log('hello2') };
 
 // pubSub.subscribe('evt', function (data) { console.log('hello') });
