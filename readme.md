@@ -26,7 +26,7 @@ Publish Subscribe Libray
     or 
 
     pubSub.broadcast('eventName',data);
-    
+
     </pre>
 
 4. Unsubscribe
@@ -35,7 +35,8 @@ Publish Subscribe Libray
     pubSub.unsubscribe('eventName',callback);
     </pre>
 
-===================================================================
+======================================================
+
 5. Subscribe multiple subscribers all at once
 
 <pre>
