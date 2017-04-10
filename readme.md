@@ -29,3 +29,29 @@ Publish Subscribe Libray
     <pre>
     pubSub.unsubscribe('eventName',callback);
     </pre>
+
+===================================================================
+5. Subscribe multiple subscribers all at once
+
+<pre>
+    var cb1=function(data){
+    console.log('hello world',data);
+    };
+
+    var cb2=function(data){
+    console.log('hello world',data);
+    };
+
+    var cb3=function(data){
+    console.log('hello world',data);
+    };
+
+
+    pubSub.subscribe('eventName',cb1,cb2,cb3);
+</pre>
+
+6. unsubscribe multiple subscribers all at once
+
+<pre>
+    pubSub.unsubscribe('eventName',cb1,cb2);
+</pre>
