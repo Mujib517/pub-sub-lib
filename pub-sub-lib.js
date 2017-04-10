@@ -69,17 +69,6 @@ PubSub.prototype.unsubscribe = function () {
 };
 
 
-
-
-/*test*/
-
-// var pubSub = new PubSub();
-// var cb = function (data) { console.log('hello2', data) };
-// var cb2 = function (data) { console.log('hello') };
-// var cb3 = function (data) { console.log('hello3') };
-
-// pubSub.subscribe('evt', cb, cb2, cb3);
-
-// pubSub.unsubscribe('evt', cb, cb2);
-
-// pubSub.multicast('evt', { data: 'data' }, 2);
+PubSub.prototype.clearAll = function (event) {
+    this.__events[event] = [];
+};

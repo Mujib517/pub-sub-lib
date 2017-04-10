@@ -55,3 +55,9 @@ Publish Subscribe Libray
 <pre>
     pubSub.unsubscribe('eventName',cb1,cb2);
 </pre>
+
+7. Remove all subscribers
+
+<pre>
+    pubSub.clearAll('eventName');
+</pre>
