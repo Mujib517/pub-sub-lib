@@ -1,6 +1,6 @@
 {
   "name": "pub-sub-lib",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A simple publish subscribe library",
   "main": "pub-sub-lib.js",
   "scripts": {
