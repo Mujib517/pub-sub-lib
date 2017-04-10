@@ -2,7 +2,7 @@
   "name": "pub-sub-lib",
   "version": "1.0.0",
   "description": "A simple publish subscribe library",
-  "main": "index.js",
+  "main": "pub-sub-lib.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
