@@ -29,6 +29,12 @@ Publish Subscribe Libray
 
     </pre>
 
+3. a Multicast: notify first n subscribers
+
+<pre>
+    pubSub.multicast('eventName',data,2); //notifies first two subscribers
+</pre>
+
 4. Unsubscribe
 
     <pre>
